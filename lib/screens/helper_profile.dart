@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:iaidyou/components/comment.dart';
+import 'package:iaidyou/components/video_player_item.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
+import 'package:video_player/video_player.dart';
 
 class HelperProfile extends StatelessWidget {
+
+
+  void _playPresentationVideo(BuildContext context){
+
+    AlertDialog videoDialog = AlertDialog(
+              title: Text("Vídeo"),
+              contentPadding: EdgeInsets.all(0),
+              content: VideoPlayerItem(
+                videoPlayer: VideoPlayerController.asset('assets/videos/butterfly.mp4'),
+                looping: true,
+              ),
+            );
+
+    showDialog(context: context, 
+               builder: (context) => videoDialog,
+               barrierDismissible: true,
+             );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -49,9 +70,9 @@ class HelperProfile extends StatelessWidget {
                         Divider(height: 4,  color: Colors.grey, ),
                         SizedBox(height: 16,),
 
-                        MaterialButton(
+                       /* MaterialButton(
                           onPressed: () {
-                          
+                            _playPresentationVideo(context);
                           },
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,8 +89,20 @@ class HelperProfile extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),
                           ),
+                        ), */
+
+                        Text("Presentation Video", style: 
+                            TextStyle( fontWeight: FontWeight.bold, color: Colors.grey[600] ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          child: VideoPlayerItem(
+                                  videoPlayer: VideoPlayerController.asset('assets/videos/butterfly.mp4'),
+                                  looping: true,
+                                ),
                         ),
 
+                        
 
                         SizedBox(height: 16,),
 

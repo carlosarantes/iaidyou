@@ -83,8 +83,7 @@ class _AskHelpFormState extends State<AskHelpForm> {
 
           MaterialButton(
               onPressed: () {
-        
-               
+                Navigator.of(context).pop();
               },
               child: Text('Confirm', style: FontSizesElderly.labelButton, ),
               minWidth: 200,

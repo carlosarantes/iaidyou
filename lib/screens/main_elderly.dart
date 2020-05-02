@@ -17,11 +17,6 @@ class MainElderly extends StatefulWidget{
 
 class _MainElderly extends State<MainElderly> {
 
-
-  
-
-
-
   void _askForHelp(BuildContext context){
 
     AlertDialog requetHelpDialog = AlertDialog(

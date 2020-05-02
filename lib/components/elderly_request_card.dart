@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:iaidyou/components/help_review_form.dart';
 import 'package:iaidyou/screens/helper_profile.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
 
 class ElderlyRequestCard extends StatelessWidget {
+
+  void _reviewHelp(BuildContext context){
+    AlertDialog reviewDialog = AlertDialog(
+      title: Text("Please rate and review the help"),
+      content: HelpReviewForm(),
+    );
+
+    showDialog(context: context,
+               builder: (context) {
+
+                 return StatefulBuilder(
+                   builder: (context, setState) {
+                     return reviewDialog;
+                   }
+                 );
+               },
+               //=> reviewDialog,
+               barrierDismissible: false,
+              );
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -97,7 +119,7 @@ class ElderlyRequestCard extends StatelessWidget {
 
                         MaterialButton(
                           onPressed: () {
-                          
+                            _reviewHelp(context);
                           },
                           child: Text('Confirm', style: FontSizesElderly.text, ),
                           color: Colors.green[700],
