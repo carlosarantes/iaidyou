@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iaidyou/components/elderly_request_card.dart';
 import 'package:iaidyou/model/user.dart';
-import 'package:iaidyou/screens/ask_help.dart';
+import 'package:iaidyou/screens/ask_help_form.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
 
 class MainElderly extends StatefulWidget{
@@ -17,6 +18,24 @@ class MainElderly extends StatefulWidget{
 class _MainElderly extends State<MainElderly> {
 
 
+  
+
+
+
+  void _askForHelp(BuildContext context){
+
+    AlertDialog requetHelpDialog = AlertDialog(
+                                    title: Text("Ask For Help With..."),
+                                    content: AskHelpForm(),
+                                   ); 
+
+    showDialog(context: context, 
+               builder: (context) => requetHelpDialog,
+               barrierDismissible: true,
+             );
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +48,14 @@ class _MainElderly extends State<MainElderly> {
             padding: EdgeInsets.all(16) ,
             width: screenWidth,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+               
               children: <Widget>[
 
 
                 MaterialButton(
                   onPressed: () {
-                    Navigator.of(context).push(   MaterialPageRoute(builder: (context) => AskHelp() ) );
+                    _askForHelp(context);
+                    // Navigator.of(context).push(   MaterialPageRoute(builder: (context) => AskHelp() ) );
                   },
                   child: Text('Ask For Help', style: FontSizesElderly.labelButton, ),
                   color: Colors.blue[700],
@@ -45,7 +65,50 @@ class _MainElderly extends State<MainElderly> {
                       borderRadius: BorderRadius.circular(32.0),
                   ),
                 ),
-                
+
+
+                SizedBox(height: 20,),
+
+                Text("Request you've done", style: TextStyle( fontWeight: FontWeight.bold )
+                                  .merge( FontSizesElderly.title),   
+                                  textAlign: TextAlign.start,   ),
+
+                SizedBox(height: 20,),
+
+                Expanded(
+                  flex: 1,
+                  child: ListView(
+                    children: <Widget>[
+
+                      ElderlyRequestCard(),
+                      ElderlyRequestCard(),
+                      ElderlyRequestCard(),
+                      ElderlyRequestCard(),
+                      ElderlyRequestCard(),
+                    ],
+                  ),
+                  
+                  
+                  
+                 /*  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("You haven't asked for help yet...", 
+                          style: TextStyle( 
+                            color: Colors.grey[500] ).merge(FontSizesElderly.placeholder),
+                          textAlign: TextAlign.center,
+                      
+                      )
+                    ],
+                  ),  */
+                  
+                  
+                  
+                  
+                  ),
+
+
+
 
               ],
             ),
