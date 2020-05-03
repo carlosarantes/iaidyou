@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iaidyou/components/youger_help_card.dart';
-import 'package:iaidyou/model/user.dart';
+import 'package:iaidyou/models/user.dart';
 import 'package:iaidyou/screens/younger_settings.dart';
 import 'package:iaidyou/styles/font_sizes_younger.dart';
 

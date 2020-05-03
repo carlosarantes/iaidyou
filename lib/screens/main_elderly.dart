@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iaidyou/components/elderly_request_card.dart';
-import 'package:iaidyou/model/user.dart';
+import 'package:iaidyou/models/user.dart';
 import 'package:iaidyou/screens/ask_help_form.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
 

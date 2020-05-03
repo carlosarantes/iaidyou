@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iaidyou/model/user.dart';
+import 'package:iaidyou/models/user.dart';
 import 'package:iaidyou/screens/phone_verification.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
 
@@ -8,9 +8,7 @@ class Login extends StatelessWidget {
   final User user = User();
 
   void goToPhoneVerification(BuildContext context, String userType){
-    user.userType = userType;
-  
-
+    user.type = userType;
     Navigator.of(context).push(  MaterialPageRoute(builder: (context) => PhoneVerification(user: user,) ) );
   }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iaidyou/model/user.dart';
+import 'package:iaidyou/models/user.dart';
 import 'package:iaidyou/screens/registration.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
 import 'package:iaidyou/styles/font_sizes_younger.dart';
@@ -13,7 +13,7 @@ class PhoneVerification extends StatelessWidget {
   PhoneVerification({ @required this.user });
 
   TextStyle _titleStyle(){
-    if(user.userType == 'ELDER'){
+    if(user.type == 'ELDER'){
       return FontSizesElderly.title;
     } else {
       return FontSizesYounger.title;
@@ -21,7 +21,7 @@ class PhoneVerification extends StatelessWidget {
   }
 
   TextStyle _textInputSyle(){
-    if(user.userType == 'ELDER'){
+    if(user.type == 'ELDER'){
       return FontSizesElderly.textInput;
     } else {
       return FontSizesYounger.textInput;
@@ -29,7 +29,7 @@ class PhoneVerification extends StatelessWidget {
   }
 
   TextStyle _labelButtonStyle(){
-    if(user.userType == 'ELDER'){
+    if(user.type == 'ELDER'){
       return FontSizesElderly.labelButton;
     } else {
       return FontSizesYounger.labelButton;
@@ -74,7 +74,7 @@ class PhoneVerification extends StatelessWidget {
             
             MaterialButton(
               onPressed: () {
-                user.phone = _phoneController.text;
+                user.phoneNumber = _phoneController.text;
                 Navigator.of(context).push(  MaterialPageRoute(builder: (context) => Registration(user: user,) )  );
               },
               child: Text('Proceed', style: _labelButtonStyle()  ,),

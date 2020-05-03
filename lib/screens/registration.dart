@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iaidyou/model/user.dart';
+import 'package:iaidyou/models/user.dart';
 import 'package:iaidyou/screens/main_elderly.dart';
 import 'package:iaidyou/screens/main_younger.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
@@ -16,9 +16,9 @@ class Registration extends StatelessWidget {
   void _completeRegistration(BuildContext context){
 
     user.name    = _nameController.text;
-    user.address = _addressController.text;
+    // user.address = _addressController.text;
 
-    if(user.userType == 'ELDER') {
+    if(user.type == 'ELDER') {
       Navigator.pushReplacement(context,  MaterialPageRoute(builder: (context) => MainElderly(user: user)  ) );
       // Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (context) => MainElderly(user: user)  ) );
     } else {
@@ -29,7 +29,7 @@ class Registration extends StatelessWidget {
 
 
   TextStyle _titleStyle(){
-    if(user.userType == 'ELDER'){
+    if(user.type == 'ELDER'){
       return FontSizesElderly.title;
     } else {
       return FontSizesYounger.title;
@@ -38,7 +38,7 @@ class Registration extends StatelessWidget {
 
 
   TextStyle _textInputSyle(){
-    if(user.userType == 'ELDER'){
+    if(user.type == 'ELDER'){
       return FontSizesElderly.textInput;
     } else {
       return FontSizesYounger.textInput;
@@ -47,7 +47,7 @@ class Registration extends StatelessWidget {
 
 
   TextStyle _labelButtonStyle(){
-    if(user.userType == 'ELDER'){
+    if(user.type == 'ELDER'){
       return FontSizesElderly.labelButton;
     } else {
       return FontSizesYounger.labelButton;
@@ -98,10 +98,7 @@ class Registration extends StatelessWidget {
               ),
 
 
-
-
               SizedBox(height: 16,),
-
 
 
               MaterialButton(
