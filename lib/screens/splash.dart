@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:iaidyou/screens/login.dart';
- 
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -19,7 +16,7 @@ Future<bool> _checkSession() async {
 
   await Future.delayed( Duration(milliseconds: 3500), (){});
 
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  // SharedPreferences prefs = await SharedPreferences.getInstance();
   
   return false;
 }

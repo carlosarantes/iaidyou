@@ -7,7 +7,7 @@ import 'package:video_player/video_player.dart';
 class HelperProfile extends StatelessWidget {
 
 
-  void _playPresentationVideo(BuildContext context){
+  /*void _playPresentationVideo(BuildContext context){
 
     AlertDialog videoDialog = AlertDialog(
               title: Text("Vídeo"),
@@ -22,7 +22,7 @@ class HelperProfile extends StatelessWidget {
                builder: (context) => videoDialog,
                barrierDismissible: true,
              );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

@@ -7,4 +7,4 @@ final Client commonWebclient = HttpClientWithInterceptor.build(
   requestTimeout: Duration(seconds: 10)
 );
 
-const String baseUrl = '';
+const String baseUrl = 'https://iaidyou.herokuapp.com/api/v1';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iaidyou/screens/login.dart';
 import 'package:iaidyou/screens/splash.dart';
 
 void main() => runApp(IAidYou());

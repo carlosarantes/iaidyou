@@ -8,9 +8,9 @@ class PhoneVerification extends StatelessWidget {
 
   final User user;
   final TextEditingController _phoneController = TextEditingController();
-  TextStyle textStyle;
+  final TextStyle textStyle;
 
-  PhoneVerification({ @required this.user });
+  PhoneVerification({ @required this.user, this.textStyle });
 
   TextStyle _titleStyle(){
     if(user.type == 'ELDER'){

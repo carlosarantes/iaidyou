@@ -31,7 +31,7 @@ class User {
 
   @override
   String toString() {
-    return 'ID: ${id} - Name: ${name}, phone: ${phoneNumber}, userType: ${type}';
+    return 'ID: '+id.toString()+' - Name: '+name+', phone: '+phoneNumber+', userType: '+type+'';
   }
 }
 
