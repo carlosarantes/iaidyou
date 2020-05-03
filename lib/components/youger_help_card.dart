@@ -5,7 +5,76 @@ import 'package:url_launcher/url_launcher.dart';
 class YoungerHelpCard extends StatelessWidget {
 
   final bool inProggress;
-  YoungerHelpCard({ this.inProggress });
+  YoungerHelpCard({ this.inProggress, @required this.status });
+
+   String status;
+
+    bool showMainButton(){
+      switch (status) {
+        case "PENDING":
+          return true;
+        break;
+        case "IN_PROGRESS":
+          return true;
+        break;   
+        case "FINISHED":
+          return false;
+        break;  
+        default:
+          return false;
+        break;
+      }
+    }
+
+    bool showSecondaryButton() {
+      switch (status) {
+        case "PENDING":
+          return false;
+        break;
+        case "IN_PROGRESS":
+          return true;
+        break;    
+        case "FINISHED":
+          return false;
+        break;  
+        default:
+          return false;
+        break;
+      }
+    }
+
+    String statusLabel(){
+      switch (status) {
+        case "PENDING":
+          return "Some elderly needs your help, save the day";
+        break;
+        case "IN_PROGRESS":
+          return "Elderly is waiting you deliver";
+        break;   
+        case "FINISHED":
+          return "The help has been finished, nice hero!!";
+        break;  
+        default:
+          return "";
+        break;
+      }
+    }
+
+    String mainActionText(){
+      switch (status) {
+        case "PENDING":
+          return "I want to help";
+        break;
+        case "IN_PROGRESS":
+          return "Finish";
+        break;  
+        default:
+          return "";
+        break;
+      }
+    }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +106,7 @@ class YoungerHelpCard extends StatelessWidget {
               Divider( height: 2, color: Colors.grey, ),
               SizedBox(height: 8,),     
 
-              Text(  inProggress ? "ELDERLY WAITING DELIVERY" : "ELDERLY WAITING FOR HELP", 
+              Text(statusLabel(), 
                 style: TextStyle( fontWeight: FontWeight.bold, 
                                   color: Colors.grey[700])
                                   .merge( FontSizesYounger.text), ),
@@ -51,41 +120,43 @@ class YoungerHelpCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  MaterialButton(
-                    onPressed: () {
-                       
-                    },
-                    child: Text('Confirm', style: FontSizesYounger.text, ),
-                    color: Colors.teal[500],
-                
-                    padding: EdgeInsets.all(12),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                    ),
+
+                  Visibility(
+                    visible: showSecondaryButton(),
+                    child: MaterialButton(
+                              onPressed: () {
+                                launch("tel:34992846594");
+                              },
+                              child: Text('Call', style: FontSizesYounger.text, ),
+                              color: Colors.blue[500],
+                          
+                              padding: EdgeInsets.all(12),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(32.0),
+                              ),
+                            ),
                   ),
-
-
 
                   SizedBox(width: 10,),
 
-                  MaterialButton(
-                    onPressed: () {
-                      launch("tel:34992846594");
-                    },
-                    child: Text('Call', style: FontSizesYounger.text, ),
-                    color: Colors.blue[500],
-                
-                    padding: EdgeInsets.all(12),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                    ),
+                  Visibility(
+                    visible: showMainButton(),
+                    child: MaterialButton(
+                              onPressed: () {
+                                
+                              },
+                              child: Text(mainActionText(), style: FontSizesYounger.text, ),
+                              color: Colors.teal[500],
+                          
+                              padding: EdgeInsets.all(12),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(32.0),
+                              ),
+                            ),
                   ),
-
 
                 ],
               ),               
-
-
 
 
            ],
