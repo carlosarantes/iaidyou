@@ -45,6 +45,8 @@ class _MainYoungerState extends State<MainYounger> {
                            SizedBox(height: 8,),
                           YoungerHelpCard(inProggress: true, status: "IN_PROGRESS", ),
                           YoungerHelpCard(inProggress: true, status: "IN_PROGRESS",),
+                          YoungerHelpCard(inProggress: false,status: "FINISHED", ),
+                          YoungerHelpCard(inProggress: false, status: "FINISHED",),
                           SizedBox(height: 56,),
 
                           Text("Elderly who need help", style: TextStyle( fontWeight: FontWeight.bold ).merge(FontSizesYounger.title), ),
@@ -52,8 +54,7 @@ class _MainYoungerState extends State<MainYounger> {
                           YoungerHelpCard(inProggress: false, status: "PENDING", ),
                           YoungerHelpCard(inProggress: false, status: "PENDING",),
                           YoungerHelpCard(inProggress: false, status: "PENDING",),
-                          YoungerHelpCard(inProggress: false,status: "FINISHED", ),
-                          YoungerHelpCard(inProggress: false, status: "FINISHED",),
+                      
                       ],
                     ),
             ),

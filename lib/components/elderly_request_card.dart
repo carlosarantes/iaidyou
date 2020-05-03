@@ -55,6 +55,29 @@ class ElderlyRequestCard extends StatelessWidget {
     }
   }
 
+  bool showHelperCard() {
+    switch (status) {
+      case "PENDING":
+        return false;
+      break;
+      case "HELP_OFFERED":
+        return true;
+      break;
+      case "IN_PROGRESS":
+        return true;
+      break;
+      case "CANCELED":
+        return true;
+      break;      
+      case "FINISHED":
+        return true;
+      break;  
+      default:
+        return false;
+      break;
+    }
+  }
+
   String statusLabel(){
     switch (status) {
       case "PENDING":
@@ -126,8 +149,6 @@ class ElderlyRequestCard extends StatelessWidget {
     }
   }
 
-
-
   void _reviewHelp(BuildContext context){
     AlertDialog reviewDialog = AlertDialog(
       title: Text("Please rate and review the help"),
@@ -167,54 +188,78 @@ class ElderlyRequestCard extends StatelessWidget {
                         ),
 
                     SizedBox(height: 8,),
-                    Divider(height: 2, color: Colors.grey, ),
-                    SizedBox(height: 8,),
-                    Text("Helper:", style: 
-                            TextStyle( color: Colors.grey[800], fontWeight: FontWeight.bold ),
+
+                    Visibility(
+                      visible: showHelperCard(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+
+                                Divider(height: 2, color: Colors.grey, ),
+                                SizedBox(height: 8,),
+                                Text("Helper:", style: 
+                                        TextStyle( color: Colors.grey[800], fontWeight: FontWeight.bold ),
+                                    ),
+
+                                SizedBox(height: 8,),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.of(context).push(  MaterialPageRoute(builder: (context) => HelperProfile() ) );
+                                      },
+                                      child: 
+                                          Row(
+                                            children: <Widget>[
+
+                                              Container(
+                                                width: 60.0,
+                                                height: 60.0,
+                                                decoration:  BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    image:  DecorationImage(
+                                                        fit: BoxFit.fill,
+                                                        image:  NetworkImage(
+                                                            "https://i.imgur.com/BoN9kdC.png")
+                                                    ),
+
+                                                    boxShadow: [
+                                                      BoxShadow( color: Colors.black54,  blurRadius: 4, spreadRadius: 1 )
+                                                    ]
+
+
+
+                                                ),
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.all(8),
+                                                child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: <Widget>[
+                                                          Text("Carl Johnson", style: TextStyle( fontWeight: FontWeight.bold ).merge(  FontSizesElderly.text ),   ),
+                                                          Text("Phone Number: +1 553 569 879", style: TextStyle( fontWeight: FontWeight.bold, color: Colors.grey[800] ),),
+                                                        ],
+                                                      ),
+                                              ),
+                                            ],
+                                          ),
+                                    ),
+
+
+
+                          ],
                         ),
 
-                    SizedBox(height: 8,),
 
-                    InkWell(
-                        onTap: (){
-                          Navigator.of(context).push(  MaterialPageRoute(builder: (context) => HelperProfile() ) );
-                        },
-                        child: 
-                            Row(
-                              children: <Widget>[
 
-                                Container(
-                                  width: 60.0,
-                                  height: 60.0,
-                                  decoration:  BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image:  DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image:  NetworkImage(
-                                              "https://i.imgur.com/BoN9kdC.png")
-                                      ),
-
-                                      boxShadow: [
-                                        BoxShadow( color: Colors.black54,  blurRadius: 4, spreadRadius: 1 )
-                                      ]
+                      ),  
 
 
 
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text("Carl Johnson", style: TextStyle( fontWeight: FontWeight.bold ).merge(  FontSizesElderly.text ),   ),
-                                            Text("Phone Number: +1 553 569 879", style: TextStyle( fontWeight: FontWeight.bold, color: Colors.grey[800] ),),
-                                          ],
-                                        ),
-                                ),
-                              ],
-                            ),
-                  ),
+
+
+
+
+
+
 
 
 
