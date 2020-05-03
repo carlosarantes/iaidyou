@@ -76,11 +76,16 @@ class _MainElderly extends State<MainElderly> {
                   child: ListView(
                     children: <Widget>[
 
-                      ElderlyRequestCard(),
-                      ElderlyRequestCard(),
-                      ElderlyRequestCard(),
-                      ElderlyRequestCard(),
-                      ElderlyRequestCard(),
+                      ElderlyRequestCard( status: "PENDING", ),
+                      ElderlyRequestCard( status: "HELP_OFFERED", ),
+                      ElderlyRequestCard(  status: "HELP_OFFERED", ),
+                      ElderlyRequestCard( status: "IN_PROGRESS", ),
+                      ElderlyRequestCard( status: "IN_PROGRESS", ),
+                      ElderlyRequestCard( status: "IN_PROGRESS", ),
+                      ElderlyRequestCard( status: "CANCELED", ),
+                      ElderlyRequestCard(  status: "CANCELED", ),
+                      ElderlyRequestCard( status: "FINISHED", ),
+                      ElderlyRequestCard( status: "FINISHED", ),
                     ],
                   ),
                   

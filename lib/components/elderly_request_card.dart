@@ -5,6 +5,129 @@ import 'package:iaidyou/styles/font_sizes_elderly.dart';
 
 class ElderlyRequestCard extends StatelessWidget {
 
+  String status;
+
+  ElderlyRequestCard({ @required this.status });
+  
+  bool showMainButton(){
+    switch (status) {
+      case "PENDING":
+        return false;
+      break;
+      case "HELP_OFFERED":
+        return true;
+      break;
+      case "IN_PROGRESS":
+        return true;
+      break;
+      case "CANCELED":
+        return false;
+      break;      
+      case "FINISHED":
+        return false;
+      break;  
+      default:
+        return false;
+      break;
+    }
+  }
+
+  bool showSecondaryButton() {
+    switch (status) {
+      case "PENDING":
+        return true;
+      break;
+      case "HELP_OFFERED":
+        return true;
+      break;
+      case "IN_PROGRESS":
+        return false;
+      break;
+      case "CANCELED":
+        return true;
+      break;      
+      case "FINISHED":
+        return true;
+      break;  
+      default:
+        return false;
+      break;
+    }
+  }
+
+  String statusLabel(){
+    switch (status) {
+      case "PENDING":
+        return "Waiting for someone...";
+      break;
+      case "HELP_OFFERED":
+        return "Someone is offering help";
+      break;
+      case "IN_PROGRESS":
+        return "In Progress, please wait...";
+      break;
+      case "CANCELED":
+        return "Help Request Canceled";
+      break;      
+      case "FINISHED":
+        return "The help has been finished";
+      break;  
+      default:
+        return "";
+      break;
+    }
+  }
+
+
+  String seccondaryActionText(){
+    switch (status) {
+      case "PENDING":
+        return "I dont't need anymore";
+      break;
+      case "HELP_OFFERED":
+        return "Deny";
+      break;
+      case "IN_PROGRESS":
+        return "";
+      break;
+      case "CANCELED":
+        return "Delete";
+      break;      
+      case "FINISHED":
+        return "Delete";
+      break;  
+      default:
+        return "";
+      break;
+    }
+  }
+
+
+  String mainActionText(){
+    switch (status) {
+      case "PENDING":
+        return "Finish";
+      break;
+      case "HELP_OFFERED":
+        return "Accept";
+      break;
+      case "IN_PROGRESS":
+        return "Finish";
+      break;
+      case "CANCELED":
+        return "";
+      break;      
+      case "FINISHED":
+        return "Review";
+      break;  
+      default:
+        return "";
+      break;
+    }
+  }
+
+
+
   void _reviewHelp(BuildContext context){
     AlertDialog reviewDialog = AlertDialog(
       title: Text("Please rate and review the help"),
@@ -95,21 +218,12 @@ class ElderlyRequestCard extends StatelessWidget {
 
 
 
-
-
-
-
-
-
-
-
-
                     SizedBox(height: 8,),
                     Divider(height: 2, color: Colors.grey, ),
                     SizedBox(height: 8,),
 
 
-                    Text("WAITING DELIVERY", style: 
+                    Text(statusLabel(), style: 
                             TextStyle( color: Colors.grey[800], 
                             fontWeight: FontWeight.bold, fontSize: 16 ),
                             textAlign: TextAlign.center,
@@ -124,35 +238,42 @@ class ElderlyRequestCard extends StatelessWidget {
                       children: <Widget>[
 
               
-                        MaterialButton(
-                          onPressed: () {
-                          
-                          },
-                          child: Text('Cancel', style: FontSizesElderly.text, ),
-                          color: Colors.red[700],
-                      
-                          padding: EdgeInsets.all(12),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32.0),
-                          ),
-                        ),
+
+                        Visibility(
+                          visible: showSecondaryButton(),
+                          child: MaterialButton(
+                                    onPressed: () {
+                                    
+                                    },
+                                    child: Text(seccondaryActionText(), style: FontSizesElderly.text, ),
+                                    color: Colors.red[700],
+                                
+                                    padding: EdgeInsets.all(12),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(32.0),
+                                    ),
+                                  ), 
+                        ), 
 
                         SizedBox(width: 10,),
 
-                        MaterialButton(
-                          onPressed: () {
-                            _reviewHelp(context);
-                          },
-                          child: Text('Finish', style: FontSizesElderly.text, ),
-                          color: Colors.blue[500],
-                      
-                          padding: EdgeInsets.all(12),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32.0),
-                          ),
+                        Visibility(
+                            visible: showMainButton(),
+                            child: MaterialButton(
+                                      onPressed: () {
+                                        _reviewHelp(context);
+                                      },
+                                      child: Text(mainActionText(), style: FontSizesElderly.text, ),
+                                      color: Colors.blue[500],
+                                  
+                                      padding: EdgeInsets.all(12),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(32.0),
+                                      ),
+                                    ),
+
                         ),
-
-
+                        
 
                       ],
                     ),    
