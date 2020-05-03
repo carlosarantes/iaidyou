@@ -3,6 +3,7 @@ import 'package:iaidyou/components/comment.dart';
 import 'package:iaidyou/components/video_player_item.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
 import 'package:video_player/video_player.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HelperProfile extends StatelessWidget {
 
@@ -39,13 +40,16 @@ class HelperProfile extends StatelessWidget {
                         Container(
                           width: 100.0,
                           height: 100.0,
-                          decoration: new BoxDecoration(
+                          decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              image: new DecorationImage(
+                              image: DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: new NetworkImage(
+                                  image: NetworkImage(
                                       "https://i.imgur.com/BoN9kdC.png")
-                              )
+                              ),
+                              boxShadow: [
+                                BoxShadow( color: Colors.black54,  blurRadius: 6, spreadRadius: 1 )
+                              ]
                           ),
                         ),
 
@@ -70,29 +74,8 @@ class HelperProfile extends StatelessWidget {
                         Divider(height: 4,  color: Colors.grey, ),
                         SizedBox(height: 16,),
 
-                       /* MaterialButton(
-                          onPressed: () {
-                            _playPresentationVideo(context);
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon( Icons.play_arrow ),
-                              Text('Play Presentation Video', style: FontSizesElderly.text, ),
-                            ],
-                          ),
-                          
-                          color: Colors.blue[700],
-                      
-                          padding: EdgeInsets.all(12),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32.0),
-                          ),
-                        ), */
-
                         Text("Presentation Video", style: 
-                            TextStyle( fontWeight: FontWeight.bold, color: Colors.grey[600] ),
+                            TextStyle( fontWeight: FontWeight.bold, color: Colors.grey[600], fontSize: 16 ),
                         ),
                         Container(
                           padding: EdgeInsets.all(8),
@@ -115,6 +98,10 @@ class HelperProfile extends StatelessWidget {
 
               ),
             ),
+            floatingActionButton: FloatingActionButton(onPressed: (){
+              launch("tel:34992846594");
+            }, 
+            child: Icon( Icons.phone, size: 32, ),),
     );
   }
 }

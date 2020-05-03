@@ -63,13 +63,20 @@ class ElderlyRequestCard extends StatelessWidget {
                                 Container(
                                   width: 60.0,
                                   height: 60.0,
-                                  decoration: new BoxDecoration(
+                                  decoration:  BoxDecoration(
                                       shape: BoxShape.circle,
-                                      image: new DecorationImage(
+                                      image:  DecorationImage(
                                           fit: BoxFit.fill,
-                                          image: new NetworkImage(
+                                          image:  NetworkImage(
                                               "https://i.imgur.com/BoN9kdC.png")
-                                      )
+                                      ),
+
+                                      boxShadow: [
+                                        BoxShadow( color: Colors.black54,  blurRadius: 4, spreadRadius: 1 )
+                                      ]
+
+
+
                                   ),
                                 ),
                                 Container(
