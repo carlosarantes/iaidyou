@@ -76,22 +76,20 @@ class _RegistrationState extends State<Registration> {
         }
       });
 
-
-
     });
   }
 
   void _completeRegistration(BuildContext context){
 
     user.name    = _nameController.text;
-    // user.address = _addressController.text;
+    user.address.address  = _addressController.text;
+    user.address.address2 = _address2Controller.text;
+    user.address.city     = _cityController.text;
 
     if(user.type == 'ELDER') {
-      Navigator.pushReplacement(context,  MaterialPageRoute(builder: (context) => MainElderly(user: user)  ) );
-      // Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (context) => MainElderly(user: user)  ) );
+      Navigator.pushReplacement(context,  MaterialPageRoute(builder: (_) => MainElderly(user: user)  ) );
     } else {
-      Navigator.pushReplacement(context,  MaterialPageRoute(builder: (context) => MainYounger(user: user)  ) );
-      // Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (context) => MainYounger(user: user)  ) );
+      Navigator.pushReplacement(context,  MaterialPageRoute(builder: (_) => MainYounger(user: user)  ) );
     }
   }
 
@@ -171,12 +169,6 @@ class _RegistrationState extends State<Registration> {
               ),
 
 
-
-
-
-
-
-
               FlatButton(
                 onPressed: () async {
                   await getMyLocation();
@@ -192,8 +184,8 @@ class _RegistrationState extends State<Registration> {
                 onPressed: () {
                   _completeRegistration(context);
                 },
-                child: Text('Complete', style: _labelButtonStyle(), ),
-                color: Colors.blue[700],
+                child: Text('Save', style: _labelButtonStyle(), ),
+                color: Colors.blue[500],
                 minWidth: screenWidth-64,
                 padding: EdgeInsets.all(12),
                 shape: RoundedRectangleBorder(
@@ -204,6 +196,15 @@ class _RegistrationState extends State<Registration> {
           ),
         ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _nameController.dispose();
+    _addressController.dispose();
+    _address2Controller.dispose();
+    _cityController.dispose();
   }
 
 }

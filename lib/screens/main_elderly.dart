@@ -53,7 +53,7 @@ class _MainElderly extends State<MainElderly> {
                     // Navigator.of(context).push(   MaterialPageRoute(builder: (context) => AskHelp() ) );
                   },
                   child: Text('Ask For Help', style: FontSizesElderly.labelButton, ),
-                  color: Colors.blue[700],
+                  color: Colors.teal[500],
                   minWidth: screenWidth-64,
                   padding: EdgeInsets.all(12),
                   shape: RoundedRectangleBorder(

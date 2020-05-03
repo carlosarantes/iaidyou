@@ -70,7 +70,7 @@ class _HelpReviewFormState extends State<HelpReviewForm> {
                 },
                 child: Text('Review', style: FontSizesElderly.text, ),
                 minWidth: 170,
-                color: Colors.blue[700],
+                color: Colors.blue[500],
           
                 padding: EdgeInsets.all(12),
                 shape: RoundedRectangleBorder(

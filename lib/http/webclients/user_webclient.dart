@@ -4,15 +4,10 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:iaidyou/http/common_webclient.dart';
 import 'package:iaidyou/models/address.dart';
+import 'package:iaidyou/models/user.dart';
 
 
 class UserWebClient {
-
-  final String url = baseUrl + '/user';
-  
-  Future<bool> login () async {
-    return true;
-  }
 
   Future<Address> getAddress(double latitude, double longitude) async {
 
@@ -29,9 +24,6 @@ class UserWebClient {
 
         Address address = Address();
 
-        print(addressComponents[0]['long_name'] );
-
-
         address.address  = addressComponents[0]['long_name']+', '+addressComponents[1]['short_name']; // Street
         address.address2 = addressComponents[2]['long_name'];  // Neightboorhood
         address.city     = addressComponents[3]['long_name']; // City
@@ -41,15 +33,29 @@ class UserWebClient {
         address.latitude   = latitude;
         address.longitude  = longitude;
 
-        print(address);
-
         return address;
     } catch(error) {
         return null;
     }
   }
 
-  // 
+
+  Future<User> login(String phoneNumber) async {
+
+    final String url = baseUrl+'/guest/login';
+    Map<String, String> body = Map<String, String>();
+    body['phone_number'] = phoneNumber;
+
+    print(url);
+    
+    final Response response = await commonWebclient.post(url, body: body);
+    print(response.statusCode );
+
+    return null;
+
+  }
+
+
 
 
 

@@ -32,7 +32,20 @@ class Login extends StatelessWidget {
 
               child: Container(
                 width: screenWidth,
-                color: Colors.blue[700].withOpacity(0.7),
+                // color: Colors.blue[700].withOpacity(0.7),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                          Colors.blue[700].withOpacity(0.8),
+                          Colors.blue[600].withOpacity(0.75),
+                          Colors.blue[500].withOpacity(0.6),
+                          Colors.blue[400].withOpacity(0.6),
+                          Colors.blue[400].withOpacity(0.6),
+                    ]
+                  )
+                ),
+
+
                 child: 
                 
                 
@@ -88,7 +101,7 @@ class Login extends StatelessWidget {
                           },
                           child: Text('I need help',
                                         style: FontSizesElderly.labelButton, ),
-                          color: Colors.red,
+                          color: Colors.red[600],
                           minWidth: screenWidth-64,
                           padding: EdgeInsets.all(12),
                           shape: RoundedRectangleBorder(
@@ -105,7 +118,7 @@ class Login extends StatelessWidget {
                           },
                           child: Text('I want to help',
                                         style: FontSizesElderly.labelButton,),
-                          color: Colors.green,
+                          color: Colors.teal[500],
                           minWidth: screenWidth-64,
                           padding: EdgeInsets.all(12),
                           shape: RoundedRectangleBorder(

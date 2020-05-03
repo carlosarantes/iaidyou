@@ -116,24 +116,7 @@ class ElderlyRequestCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
 
-
-                        MaterialButton(
-                          onPressed: () {
-                            _reviewHelp(context);
-                          },
-                          child: Text('Confirm', style: FontSizesElderly.text, ),
-                          color: Colors.green[700],
-                      
-                          padding: EdgeInsets.all(12),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32.0),
-                          ),
-                        ),
-
-
-
-                        SizedBox(width: 10,),
-
+              
                         MaterialButton(
                           onPressed: () {
                           
@@ -146,6 +129,22 @@ class ElderlyRequestCard extends StatelessWidget {
                               borderRadius: BorderRadius.circular(32.0),
                           ),
                         ),
+
+                        SizedBox(width: 10,),
+
+                        MaterialButton(
+                          onPressed: () {
+                            _reviewHelp(context);
+                          },
+                          child: Text('Finish', style: FontSizesElderly.text, ),
+                          color: Colors.blue[500],
+                      
+                          padding: EdgeInsets.all(12),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32.0),
+                          ),
+                        ),
+
 
 
                       ],

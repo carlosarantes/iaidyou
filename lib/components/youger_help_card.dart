@@ -56,7 +56,7 @@ class YoungerHelpCard extends StatelessWidget {
                        
                     },
                     child: Text('Confirm', style: FontSizesYounger.text, ),
-                    color: Colors.green[700],
+                    color: Colors.teal[500],
                 
                     padding: EdgeInsets.all(12),
                     shape: RoundedRectangleBorder(
@@ -73,7 +73,7 @@ class YoungerHelpCard extends StatelessWidget {
                       launch("tel:34992846594");
                     },
                     child: Text('Call', style: FontSizesYounger.text, ),
-                    color: Colors.blue[700],
+                    color: Colors.blue[500],
                 
                     padding: EdgeInsets.all(12),
                     shape: RoundedRectangleBorder(

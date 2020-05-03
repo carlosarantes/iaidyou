@@ -40,13 +40,17 @@ class _YoungerSettingsState extends State<YoungerSettings> {
               Container(
                 width: 110.0,
                 height: 110.0,
-                decoration: new BoxDecoration(
+                decoration:  BoxDecoration(
                     shape: BoxShape.circle,
-                    image: new DecorationImage(
+                    image:  DecorationImage(
                         fit: BoxFit.fill,
-                        image: new NetworkImage(
+                        image:  NetworkImage(
                             "https://i.imgur.com/BoN9kdC.png")
-                    )
+                    ),
+
+                    boxShadow: [
+                       BoxShadow( color: Colors.black54,  blurRadius: 6, spreadRadius: 1 )
+                    ]
                 ),
               ),
 
@@ -69,7 +73,7 @@ class _YoungerSettingsState extends State<YoungerSettings> {
                 
                 },
                 child: Text('Upload Presentation Video', style: FontSizesYounger.text, ),
-                color: Colors.blue[700],
+                color: Colors.teal[500],
             
                 padding: EdgeInsets.all(12),
                 shape: RoundedRectangleBorder(
@@ -103,7 +107,7 @@ class _YoungerSettingsState extends State<YoungerSettings> {
                   
                   },
                   child: Text('Save Changes', style: FontSizesYounger.text, ),
-                  color: Colors.blue[700],
+                  color: Colors.blue[500],
                   minWidth: screenWidth,
                   padding: EdgeInsets.all(12),
                   shape: RoundedRectangleBorder(

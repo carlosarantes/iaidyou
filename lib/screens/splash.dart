@@ -49,7 +49,7 @@ void _navigateToHome(BuildContext context){
       });
     animController.forward();
 
-    _checkSession().then((status){
+   _checkSession().then((status){
       if (status) {
         _navigateToHome(context);
       } else {
@@ -66,7 +66,14 @@ void _navigateToHome(BuildContext context){
               children: <Widget>[
                  Container(
                     decoration: BoxDecoration(
-                        color: Colors.blue[700]
+                       gradient: LinearGradient(
+                         colors: [ 
+                          Colors.blue[400].withOpacity(0.7),
+                          Colors.blue[500].withOpacity(0.88),
+                          Colors.blue[700].withOpacity(0.88),
+                          Colors.blue[600].withOpacity(0.88),
+                          Colors.blue[400]
+                        ])
                     ),
                  ),
                  Column(

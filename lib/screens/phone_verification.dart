@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iaidyou/http/webclients/user_webclient.dart';
 import 'package:iaidyou/models/user.dart';
 import 'package:iaidyou/screens/registration.dart';
 import 'package:iaidyou/styles/font_sizes_elderly.dart';
@@ -9,6 +10,8 @@ class PhoneVerification extends StatelessWidget {
   final User user;
   final TextEditingController _phoneController = TextEditingController();
   final TextStyle textStyle;
+  final UserWebClient userWebClient = UserWebClient(); 
+
 
   PhoneVerification({ @required this.user, this.textStyle });
 
@@ -36,7 +39,10 @@ class PhoneVerification extends StatelessWidget {
     }
   }
 
-
+  _login(String phoneNumber, BuildContext context) async {
+     await userWebClient.login(phoneNumber);
+     Navigator.of(context).push(  MaterialPageRoute(builder: (_) => Registration(user: user,) )  );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +79,15 @@ class PhoneVerification extends StatelessWidget {
             SizedBox(height: 32,),
             
             MaterialButton(
-              onPressed: () {
+              onPressed: () async {
                 user.phoneNumber = _phoneController.text;
-                Navigator.of(context).push(  MaterialPageRoute(builder: (context) => Registration(user: user,) )  );
+
+                await _login(user.phoneNumber, context);
+
+              //  Navigator.of(context).push(  MaterialPageRoute(builder: (context) => Registration(user: user,) )  );
               },
               child: Text('Proceed', style: _labelButtonStyle()  ,),
-              color: Colors.green,
+              color: Colors.blue[500],
               minWidth: screenWidth,
               padding: EdgeInsets.all(12),
               shape: RoundedRectangleBorder(
