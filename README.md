@@ -16,4 +16,4 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ## License
-The Laravel framework is open-sourced software licensed under the MIT license.
+The Flutter framework is open-sourced software licensed under the MIT license.
