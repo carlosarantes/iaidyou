@@ -53,6 +53,25 @@ class _RegistrationState extends State<Registration> {
     return result;
   }
 
+  showLoading(BuildContext context){
+    AlertDialog loadingDialog = AlertDialog(
+      title: Text("Wait"),
+      content: Container(
+        height: 130,
+        child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                CircularProgressIndicator()
+              ],),
+      ),
+    );
+
+    showDialog(context: context, 
+              builder: (context) => loadingDialog, 
+              barrierDismissible: false);
+  }
+
+
   getMyLocation() async {
 
     return getPermission().then((result) async {
@@ -79,12 +98,19 @@ class _RegistrationState extends State<Registration> {
     });
   }
 
-  void _completeRegistration(BuildContext context){
+  Future<void> _completeRegistration(BuildContext context) async {
+
+    showLoading(context);
 
     user.name    = _nameController.text;
+    user.picture = "";
     user.address.address  = _addressController.text;
     user.address.address2 = _address2Controller.text;
     user.address.city     = _cityController.text;
+
+    await userWebClient.register(user);
+
+    Navigator.of(context).pop();
 
     if(user.type == 'ELDER') {
       Navigator.pushReplacement(context,  MaterialPageRoute(builder: (_) => MainElderly(user: user)  ) );
@@ -171,7 +197,9 @@ class _RegistrationState extends State<Registration> {
 
               FlatButton(
                 onPressed: () async {
+                  showLoading(context);
                   await getMyLocation();
+                  Navigator.of(context).pop();
                 },
                 child: Text("Update My Location", style: _labelButtonStyle(), ),
               ),
@@ -181,8 +209,8 @@ class _RegistrationState extends State<Registration> {
 
 
               MaterialButton(
-                onPressed: () {
-                  _completeRegistration(context);
+                onPressed: () async {
+                  await _completeRegistration(context);
                 },
                 child: Text('Save', style: _labelButtonStyle(), ),
                 color: Colors.blue[500],

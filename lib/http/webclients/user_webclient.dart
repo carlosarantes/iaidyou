@@ -55,8 +55,17 @@ class UserWebClient {
 
   }
 
+  Future<User> register(User user) async {
 
+    final String url = baseUrl+'/guest/register';
+    print(url);
+  
 
+    final Response response = await commonWebclient.post(url, body: jsonEncode(user.toJson()) );
+    print(response.statusCode );
+
+    return null;
+  }
 
 
 

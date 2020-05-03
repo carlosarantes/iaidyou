@@ -46,7 +46,7 @@ class _MainElderly extends State<MainElderly> {
                
               children: <Widget>[
 
-
+                SizedBox(height: 30,),
                 MaterialButton(
                   onPressed: () {
                     _askForHelp(context);
@@ -60,6 +60,7 @@ class _MainElderly extends State<MainElderly> {
                       borderRadius: BorderRadius.circular(32.0),
                   ),
                 ),
+                SizedBox(height: 12,),
 
 
                 SizedBox(height: 20,),

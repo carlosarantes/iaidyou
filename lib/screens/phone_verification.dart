@@ -39,8 +39,29 @@ class PhoneVerification extends StatelessWidget {
     }
   }
 
+  showLoading(BuildContext context){
+    AlertDialog loadingDialog = AlertDialog(
+      title: Text("Wait"),
+      content: Container(
+        height: 130,
+        child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                CircularProgressIndicator()
+              ],),
+      ),
+    );
+
+    showDialog(context: context, 
+               builder: (context) => loadingDialog, 
+               barrierDismissible: false);
+  }
+
+
   _login(String phoneNumber, BuildContext context) async {
+     showLoading(context);
      await userWebClient.login(phoneNumber);
+     Navigator.of(context).pop();
      Navigator.of(context).push(  MaterialPageRoute(builder: (_) => Registration(user: user,) )  );
   }
 
