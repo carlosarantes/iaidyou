@@ -40,7 +40,7 @@ class _MainYoungerState extends State<MainYounger> {
             child: SingleChildScrollView(
               child: Column(
                       children: <Widget>[
-                           SizedBox(height: 16,),
+                           SizedBox(height: 8,),
                           Text("Helps in progress", style: TextStyle( fontWeight: FontWeight.bold ).merge(FontSizesYounger.title), ),
                            SizedBox(height: 8,),
                           YoungerHelpCard(inProggress: true,),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iaidyou/styles/font_sizes_younger.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class YoungerHelpCard extends StatelessWidget {
 
@@ -23,6 +24,11 @@ class YoungerHelpCard extends StatelessWidget {
                                   .merge( FontSizesYounger.text), ),
 
              Text('I need help with "Grocery Store"', 
+                        style: TextStyle( fontWeight: FontWeight.bold, 
+                                          color: Colors.grey[700])
+                                          .merge( FontSizesYounger.text), ),
+
+            Text('5 km away', 
                         style: TextStyle( fontWeight: FontWeight.bold, 
                                           color: Colors.grey[700])
                                           .merge( FontSizesYounger.text), ),
@@ -64,7 +70,7 @@ class YoungerHelpCard extends StatelessWidget {
 
                   MaterialButton(
                     onPressed: () {
-                    
+                      launch("tel:34992846594");
                     },
                     child: Text('Call', style: FontSizesYounger.text, ),
                     color: Colors.blue[700],
